@@ -1,0 +1,18 @@
+version: "3.7"
+
+networks:
+    microservice:
+        external:
+            name: microservice
+
+services:
+    sleepy_api:
+        build:
+            dockerfile: Dockerfile
+            context: ./
+        ports:
+            - 5001:5000
+        networks: 
+        - microservice
+        environment:
+            - PYTHONUNBUFFERED=1
