@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sleepy-api
+  labels:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sleepy-api
+  template:
+    metadata:
+      labels:
+        app: sleepy-api
+    spec:
+      containers:
+      - name: sleepy-api
+        image: teedee22/m-sleepy-api:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sleepy-api
+spec:
+  selector:
+    app: sleepy-api
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 5001
+      targetPort: 5001
