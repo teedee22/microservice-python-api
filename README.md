@@ -12,4 +12,8 @@ Flask app which simulates a call to another system and sleeps 0.01-0.99 seconds 
 |---|---|---|
 | /new | GET | *On request, sleeps for random 0.01-0.99 seconds and then returns a response detailing how long it took*
 
+## k8s deployment
 
+```bash
+kubectl apply -f sleepy-api-k8s.yaml
+```
