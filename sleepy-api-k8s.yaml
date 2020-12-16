@@ -7,15 +7,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sleepy-api
+      app: python-api
   template:
     metadata:
       labels:
-        app: sleepy-api
+        app: python-api
     spec:
       containers:
-      - name: sleepy-api
-        image: registry.gitlab.com/teedee22/sleepy-api
+      - name: python-api
+        image: registry.gitlab.com/teedeemicro/python-api:0.0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 5001
@@ -26,10 +26,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sleepy-api
+  name: python-api
 spec:
   selector:
-    app: sleepy-api
+    app: python-api
   type: LoadBalancer
   ports:
     - protocol: TCP
