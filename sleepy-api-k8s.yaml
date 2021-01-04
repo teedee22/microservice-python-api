@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sleepy-api
+  name: python-api
   labels:
 spec:
   replicas: 1
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: python-api
-        image: registry.gitlab.com/teedeemicro/python-api:0.0.1
+        image: registry.gitlab.com/teedeemicro/python-api:0.0.2
         imagePullPolicy: Always
         ports:
         - containerPort: 5001
